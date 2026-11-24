@@ -1,4 +1,4 @@
-import { OhlcvBar, SignalType } from '../types/market';
+import type { OhlcvBar, SignalType } from '../types/market';
 
 export interface TimeValuePoint {
   time: string;
@@ -113,8 +113,7 @@ export function calculateRSI(bars: OhlcvBar[], period = 14): TimeValuePoint[] {
 
   const result: TimeValuePoint[] = [];
   const pushRsi = (idx: number) => {
-    const rs = avgLoss === 0 ? 100 : avgGain / avgLoss;
-    const rsi = avgLoss === 0 ? 100 : 100 - 100 / (1 + rs);
+    const rsi = avgLoss === 0 ? (avgGain === 0 ? 50 : 100) : 100 - 100 / (1 + avgGain / avgLoss);
     result.push({
       time: bars[idx].time,
       timestamp: bars[idx].timestamp,
@@ -139,7 +138,7 @@ export function calculateMACD(
   slow = 26,
   signalPeriod = 9
 ): MacdPoint[] {
-  if (bars.length < slow + signalPeriod) return [];
+  if (bars.length < slow + signalPeriod - 1) return [];
 
   const emaFast = calculateEMA(bars, fast);
   const emaSlow = calculateEMA(bars, slow);

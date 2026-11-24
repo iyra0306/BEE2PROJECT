@@ -507,7 +507,8 @@ async function startServer() {
   initMongo();
   initProviderStreams();
   const app = createApiApp();
-  const apiOnly = process.env.API_ONLY === 'true';
+  if (process.argv.includes('--production')) process.env.NODE_ENV = 'production';
+  const apiOnly = process.env.API_ONLY === 'true' || process.argv.includes('--api-only');
   const isProd = process.env.NODE_ENV === 'production';
 
   if (apiOnly) {
