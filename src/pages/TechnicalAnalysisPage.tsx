@@ -684,7 +684,7 @@ export const TechnicalAnalysisPage: React.FC = () => {
                     {bars.length === 0
                       ? historyMeta.unavailableReason ||
                         'Connect the market data provider to compute MACD(12, 26, 9).'
-                      : `Current range contains ${bars.length} bars; MACD requires at least 35 bars. Switch to 3M or higher.`}
+                      : `Current range contains ${bars.length} bars; MACD requires at least 34 bars. Switch to 3M or higher.`}
                   </p>
                 </div>
               )}
