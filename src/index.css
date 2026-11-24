@@ -1,0 +1,107 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg-main: #f4f7f5;
+  --bg-secondary: #eaf0ec;
+  --bg-card: #ffffff;
+  --bg-elevated: #eef4f0;
+  --accent-emerald: #22a063;
+  --accent-deep: #18402d;
+  --accent-mint: #16653e;
+  --text-main: #101813;
+  --text-secondary: #4e6055;
+  --border-subtle: rgba(16, 24, 19, 0.1);
+}
+
+.dark {
+  --bg-main: #101512;
+  --bg-secondary: #141c17;
+  --bg-card: #18211c;
+  --bg-elevated: #202b24;
+  --accent-emerald: #36c982;
+  --accent-deep: #214b37;
+  --accent-mint: #a5ebc3;
+  --text-main: #e8f0ea;
+  --text-secondary: #91a197;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .font-mono-num {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent-emerald);
+    outline-offset: 2px;
+  }
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(145, 161, 151, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(54, 201, 130, 0.45);
+}
+
+/* Surface utility tokens */
+.surface-main {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.surface-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.surface-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.surface-elevated {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

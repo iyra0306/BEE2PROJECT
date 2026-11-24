@@ -1,0 +1,6 @@
+{
+  "name": "BULLSIGHT",
+  "description": "AI-powered stock market intelligence platform for Indian and US equities. See the Bull. Predict the Move.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
